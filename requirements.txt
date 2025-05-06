@@ -1,0 +1,6 @@
+streamlit
+requests
+httpx
+pytz
+beautifulsoup4
+lxml
