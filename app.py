@@ -26,6 +26,7 @@ geonodos = {
     "General Alvear": {"url": "https://ides.alvearmendoza.gob.ar/", "geoserver": "https://ides.alvearmendoza.gob.ar/geoserver/"},
     "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
     "Tupungato": {"url": "https://ides.tupungato.gob.ar/", "geoserver": "https://ides.tupungato.gob.ar/geoserver/"},
+    "lUJÁN DE cUYO": {"url": "https://geoportal.lujandecuyo.gob.ar/", "geoserver": "https://geoportal.lujandecuyo.gob.ar/geoserver/"},
 }
 
 # chequear el estado de un GeoNodo
