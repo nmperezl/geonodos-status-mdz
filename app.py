@@ -32,11 +32,12 @@ geonodos = {
 # chequear el estado de un GeoNodo
 def check_status(url):
     try:
-        r = requests.get(url, timeout=3)
+        r = requests.get(url, timeout=5)
         if "lavallemendoza" in url:
             try:
-                wms_test = requests.get(url + "wms?service=WMS&request=GetCapabilities", timeout=5)
-                if "ServiceException" in wms_test.text or wms_test.status_code != 200:
+            wfs_url = "https://geoserver.lavallemendoza.gob.ar/geonode/ows?service=WFS&request=GetCapabilities"
+            test = requests.get(wfs_url, timeout=5)
+            if test.status_code != 200 or "<ows:Exception>" in test.text:
                     return "🔴 Caído", None
             except:
                 return "🔴 Caído", None
