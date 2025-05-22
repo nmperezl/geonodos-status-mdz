@@ -37,7 +37,7 @@ def check_status(url):
             wfs_url = "https://geoserver.lavallemendoza.gob.ar/geoserver/ows?service=WFS&request=GetCapabilities"
             test = requests.get(wfs_url, timeout=5)
             if test.status_code != 200 or "<ows:Exception>" in test.text:
-                return "🔴 Caído", None
+                return "🔴 Revisar", None
             else:
                 return "🟢 En línea", test.text
 
