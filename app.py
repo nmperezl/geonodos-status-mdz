@@ -24,23 +24,21 @@ geonodos = {
     "Godoy Cruz": {"url": "https://ide.godoycruz.gob.ar/", "geoserver": "https://ide.godoycruz.gob.ar/geoserver/"},
     "Guaymallén": {"url": "https://ides.guaymallen.gob.ar/", "geoserver": "https://ides.guaymallen.gob.ar/geoserver/"},
     "General Alvear": {"url": "https://ides.alvearmendoza.gob.ar/", "geoserver": "https://ides.alvearmendoza.gob.ar/geoserver/"},
-    "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
+  #  "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
     "Tupungato": {"url": "https://ides.tupungato.gob.ar/", "geoserver": "https://ides.tupungato.gob.ar/geoserver/"},
     "Luján de Cuyo": {"url": "https://geoportal.lujandecuyo.gob.ar/", "geoserver": "https://geoportal.lujandecuyo.gob.ar/geoserver/"},
 }
+
+# Lavalle separado
+lavalle = {
+    "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"}
+}
+
 
 # chequear el estado de un GeoNodo
 def check_status(url):
     try:
         r = requests.get(url, timeout=5)
-        if "lavallemendoza" in url:
-            wfs_url = "https://geoserver.lavallemendoza.gob.ar/geoserver/ows?service=WFS&request=GetCapabilities"
-            test = requests.get(wfs_url, timeout=5)
-            if test.status_code != 200 or "<ows:Exception>" in test.text:
-                return "🔴 Revisar", None
-            else:
-                return "🟢 En línea", test.text
-
         if r.status_code == 200:
             if any(err in r.text for err in ["Error", "502 Bad Gateway", "404 Not Found"]):
                 return "🔴 Caído", None
@@ -50,6 +48,19 @@ def check_status(url):
 
     except requests.exceptions.RequestException as e:
         return "🔴 Caído", None
+
+
+# Función para chequear Lavalle 
+def check_lavalle_status(geoserver_url):
+    try:
+        test_url = f"{geoserver_url}ows?service=WFS&request=GetCapabilities"
+        test = requests.get(test_url, timeout=5)
+        if test.status_code != 200 or "<ows:Exception>" in test.text:
+            return "🔴 Revisar", None
+        return "🟢 En línea", test.text
+    except:
+        return "🔴 Revisar", None
+
 
 # Contar capas WFS
 def count_wfs_layers(geoserver_url):
