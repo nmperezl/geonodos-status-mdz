@@ -21,11 +21,11 @@ st.markdown(f" Chequeo realizado el: **{hora_actual}**")
 # Diccionario de GeoNodos
 geonodos = {
     "San Martín": {"url": "https://sig.sanmartinmza.gob.ar/", "geoserver": "https://sig.sanmartinmza.gob.ar/geoserver/"},
+    "Tupungato": {"url": "https://ides.tupungato.gob.ar/", "geoserver": "https://ides.tupungato.gob.ar/geoserver/"},
     "Godoy Cruz": {"url": "https://ide.godoycruz.gob.ar/", "geoserver": "https://ide.godoycruz.gob.ar/geoserver/"},
     "Guaymallén": {"url": "https://ides.guaymallen.gob.ar/", "geoserver": "https://ides.guaymallen.gob.ar/geoserver/"},
     "General Alvear": {"url": "https://ides.alvearmendoza.gob.ar/", "geoserver": "https://ides.alvearmendoza.gob.ar/geoserver/"},
   #  "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
-    "Tupungato": {"url": "https://ides.tupungato.gob.ar/", "geoserver": "https://ides.tupungato.gob.ar/geoserver/"},
     "Luján de Cuyo": {"url": "https://geoportal.lujandecuyo.gob.ar/", "geoserver": "https://geoportal.lujandecuyo.gob.ar/geoserver/"},
 }
 
@@ -80,6 +80,13 @@ def count_wfs_layers(geoserver_url):
 # Estilos
 st.markdown("""
 <style>
+
+/* Fondo negro para toda la app */
+body {
+    background-color: #000000;
+    color: white;
+}
+
 .status-card {
     background-color: #1f1917;
     border-radius: 8px;
@@ -132,6 +139,32 @@ for nombre, data in geonodos.items():
             </div>
         </div>
         """, 
+        unsafe_allow_html=True
+    )
+
+
+
+# Título para Lavalle
+st.markdown("<h4 style='margin-top:30px;'>Chequeo especial: Lavalle</h4>", unsafe_allow_html=True)
+
+# Mostrar Lavalle
+for nombre, data in lavalle.items():
+    estado, _ = check_lavalle_status(data['geoserver'])
+    status_class = "status-online" if "🟢" in estado else "status-offline"
+    dataset_count = count_wfs_layers(data['geoserver'])
+    count_text = f"<br><strong>{dataset_count}</strong> datasets (desde WFS)" if dataset_count is not None else ""
+    
+    st.markdown(
+        f"""
+        <div class="status-card {status_class}">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong>{nombre}</strong> → {estado}{count_text}
+                </div>
+                <a href="{data['url']}" target="_blank">🌐 Abrir sitio</a>
+            </div>
+        </div>
+        """,
         unsafe_allow_html=True
     )
 
