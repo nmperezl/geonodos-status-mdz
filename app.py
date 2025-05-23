@@ -55,11 +55,13 @@ def check_lavalle_status(geoserver_url):
     try:
         test_url = f"{geoserver_url}ows?service=WFS&request=GetCapabilities"
         test = requests.get(test_url, timeout=5)
-        if test.status_code != 200 or "<ows:Exception>" in test.text:
+        if test.status_code != 200: 
+            return "🟢 En línea", test.text
+        else:
             return "🔴 Revisar", None
-        return "🟢 En línea", test.text
     except:
         return "🔴 Revisar", None
+
 
 
 # Contar capas WFS
