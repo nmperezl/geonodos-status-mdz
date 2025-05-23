@@ -143,10 +143,6 @@ for nombre, data in geonodos.items():
     )
 
 
-
-# Título para Lavalle
-st.markdown("<h4 style='margin-top:30px;'>Chequeo especial: Lavalle</h4>", unsafe_allow_html=True)
-
 # Mostrar Lavalle
 for nombre, data in lavalle.items():
     estado, _ = check_lavalle_status(data['geoserver'])
