@@ -128,7 +128,7 @@ html, body, .main, .block-container {
         align-items: flex-start; /* alinea a izquierda */
         gap: 8px; /* espacio entre el texto y el enlace */
     }
-
+}
     
 }
 .status-online {
