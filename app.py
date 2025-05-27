@@ -94,6 +94,16 @@ html, body, .main, .block-container {
     padding: 0;
 }
 
+.reportview-container .main {
+    padding: 0;
+    margin: 0;
+}
+
+.block-container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 .status-card {
     background-color: #1f1917;
     border-radius: 8px;
