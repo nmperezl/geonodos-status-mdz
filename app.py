@@ -86,13 +86,20 @@ st.markdown("""
 <style>
 
 /* Fondo negro para toda la app */
-html, body, .main, .block-container {
+html, body {
     background-color: #000000 !important;
     color: #FFFFFF !important;
-    height: 100%;
     margin: 0;
     padding: 0;
+    min-height: 100%;
 }
+
+.main, .block-container {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    padding: 1rem;
+}
+
 
 .reportview-container .main {
     padding: 0;
