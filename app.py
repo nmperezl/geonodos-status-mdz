@@ -160,7 +160,7 @@ for nombre, data in geonodos.items():
     if 'geoserver' in data:
         dataset_count = count_wfs_layers(data['geoserver'])
         if dataset_count is not None:
-            fuente = " (desde WFS)"
+            fuente = " (WFS)"
             
     count_text = f"<br> <strong>{dataset_count}</strong> datasets{fuente}" if dataset_count is not None else ""
 
@@ -171,7 +171,7 @@ for nombre, data in geonodos.items():
                 <div>
                     <strong>{nombre}</strong> → {estado}{count_text}
                 </div>
-                <a href="{data['url']}" target="_blank">🌐 Abrir sitio</a>
+                <a href="{data['url']}" target="_blank">🌐 Abrir web</a>
             </div>
         </div>
         """, 
@@ -184,7 +184,7 @@ for nombre, data in lavalle.items():
     estado, _ = check_lavalle_status(data['geoserver'])
     status_class = "status-online" if "🟢" in estado else "status-offline"
     dataset_count = count_wfs_layers(data['geoserver'])
-    count_text = f"<br><strong>{dataset_count}</strong> datasets (desde WFS)" if dataset_count is not None else ""
+    count_text = f"<br><strong>{dataset_count}</strong> datasets (WFS)" if dataset_count is not None else ""
     
     st.markdown(
         f"""
@@ -193,7 +193,7 @@ for nombre, data in lavalle.items():
                 <div>
                     <strong>{nombre}</strong> → {estado}{count_text}
                 </div>
-                <a href="{data['url']}" target="_blank">🌐 Abrir sitio</a>
+                <a href="{data['url']}" target="_blank">🌐 Abrir web</a>
             </div>
         </div>
         """,
