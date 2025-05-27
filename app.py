@@ -178,7 +178,6 @@ for nombre, data in geonodos.items():
         unsafe_allow_html=True
     )
 
-)
 
 # Mostrar Lavalle
 for nombre, data in lavalle.items():
