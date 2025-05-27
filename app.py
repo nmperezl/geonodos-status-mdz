@@ -118,8 +118,9 @@ html, body {
     border-radius: 8px;
     padding: 12px 16px;
     margin: 8px 8px;
-    border-left: 5px solid;
+    border-left: 5px solid transparent;
     color: white;
+}
 
 .status-card > div {
     display: flex;
@@ -134,15 +135,14 @@ html, body {
         flex-direction: column;  /* dirección a vertical */
         align-items: flex-start; /* alinea a izquierda */
         gap: 8px; /* espacio entre el texto y el enlace */
-    }
 }
     
 }
 .status-online {
-    border-left-color: #4CAF50;
+    border-left-color: #4CAF50 !important;
 }
 .status-offline {
-    border-left-color: #F44336;
+    border-left-color: #F44336 !important;
 }
 .status-card a {
     color: #4dabf7 !important;
