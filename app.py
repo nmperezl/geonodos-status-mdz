@@ -104,6 +104,7 @@ html, body, .main, .block-container {
     padding-bottom: 1rem;
     padding-left: 1rem;  
     padding-right: 1rem;
+    min-height: 100vh;
 }
 
 .status-card {
@@ -113,7 +114,7 @@ html, body, .main, .block-container {
     margin: 8px 8px;
     border-left: 5px solid;
     color: white;
-}
+
 .status-card > div {
     display: flex;
     justify-content: space-between;
