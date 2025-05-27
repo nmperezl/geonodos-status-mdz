@@ -100,10 +100,10 @@ html, body, .main, .block-container {
 }
 
 .block-container {
-    padding-top: 1rem;
-    padding-left: 1rem;  
-    padding-right: 1rem;
+    padding: 1rem;
     min-height: 100vh;
+    box-sizing: border-box;
+    
 }
 
 .status-card {
