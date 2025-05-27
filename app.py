@@ -178,20 +178,6 @@ for nombre, data in geonodos.items():
         unsafe_allow_html=True
     )
 
-
-
-st.markdown(
-    f"""
-    <div class="status-card {status_class}">
-        <div class="card-content">
-            <div>
-                <strong>{nombre}</strong> → {estado}{count_text}
-            </div>
-            <a href="{data['url']}" target="_blank">🌐 Abrir sitio</a>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
 )
 
 # Mostrar Lavalle
