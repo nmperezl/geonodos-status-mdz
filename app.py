@@ -113,6 +113,23 @@ html, body, .main, .block-container {
     margin: 8px 16px;
     border-left: 5px solid;
     color: white;
+
+.status-card > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* permite que el contenido pueda ajustar si hace falta */
+}
+
+/* Para celular */
+@media (max-width: 600px) {
+    .status-card > div {
+        flex-direction: column;  /* dirección a vertical */
+        align-items: flex-start; /* alinea a izquierda */
+        gap: 8px; /* espacio entre el texto y el enlace */
+    }
+
+    
 }
 .status-online {
     border-left-color: #4CAF50;
