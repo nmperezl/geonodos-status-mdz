@@ -102,13 +102,15 @@ html, body, .main, .block-container {
 .block-container {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    padding-left: 2rem;  
+    padding-right: 2rem;
 }
 
 .status-card {
     background-color: #1f1917;
     border-radius: 8px;
     padding: 12px 16px;
-    margin: 8px 0;
+    margin: 8px 16px;
     border-left: 5px solid;
     color: white;
 }
