@@ -102,15 +102,15 @@ html, body, .main, .block-container {
 .block-container {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    padding-left: 2rem;  
-    padding-right: 2rem;
+    padding-left: 1rem;  
+    padding-right: 1rem;
 }
 
 .status-card {
     background-color: #1f1917;
     border-radius: 8px;
     padding: 12px 16px;
-    margin: 8px 16px;
+    margin: 8px 8px;
     border-left: 5px solid;
     color: white;
 
@@ -118,7 +118,7 @@ html, body, .main, .block-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* permite que el contenido pueda ajustar si hace falta */
+    flex-wrap: wrap; 
 }
 
 /* Para celular */
@@ -178,6 +178,21 @@ for nombre, data in geonodos.items():
         unsafe_allow_html=True
     )
 
+
+
+st.markdown(
+    f"""
+    <div class="status-card {status_class}">
+        <div class="card-content">
+            <div>
+                <strong>{nombre}</strong> → {estado}{count_text}
+            </div>
+            <a href="{data['url']}" target="_blank">🌐 Abrir sitio</a>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Mostrar Lavalle
 for nombre, data in lavalle.items():
