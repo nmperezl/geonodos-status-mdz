@@ -86,9 +86,9 @@ st.markdown("""
 <style>
 
 /* Fondo negro para toda la app */
-body {
-    background-color: #000000;
-    color: white;
+html, body, .main, .block-container {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 .status-card {
