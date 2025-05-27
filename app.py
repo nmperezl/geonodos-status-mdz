@@ -113,6 +113,7 @@ html, body {
     
 }
 
+
 .status-card {
     background-color: #1f1917;
     border-radius: 8px;
@@ -129,13 +130,13 @@ html, body {
     flex-wrap: wrap; 
 }
 
-/* Para celular */
+/* Para celular
 @media (max-width: 600px) {
     .status-card > div {
         flex-direction: column;  /* dirección a vertical */
         align-items: flex-start; /* alinea a izquierda */
         gap: 8px; /* espacio entre el texto y el enlace */
-}
+}  */
     
 }
 .status-online {
