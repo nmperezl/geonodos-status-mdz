@@ -113,7 +113,7 @@ html, body, .main, .block-container {
     margin: 8px 8px;
     border-left: 5px solid;
     color: white;
-
+}
 .status-card > div {
     display: flex;
     justify-content: space-between;
