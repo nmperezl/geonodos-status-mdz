@@ -89,6 +89,9 @@ st.markdown("""
 html, body, .main, .block-container {
     background-color: #000000 !important;
     color: #FFFFFF !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .status-card {
