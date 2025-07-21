@@ -27,8 +27,8 @@ geonodos = {
     "General Alvear": {"url": "https://ides.alvearmendoza.gob.ar/", "geoserver": "https://ides.alvearmendoza.gob.ar/geoserver/"},
   #  "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
     "Luján de Cuyo": {"url": "https://geoportal.lujandecuyo.gob.ar/", "geoserver": "https://geoportal.lujandecuyo.gob.ar/geoserver/"},
-    "San Rafael - Integrando": {"url": "https://mapas.mhnsanrafael.gob.ar/", "geoserver": "https://mapas.mhnsanrafael.gob.ar/geoserver/"},
-    "San Carlos - Integrando": {"url": "https://mapas.sancarlos.gob.ar/#/", "geoserver": "https://mapas.sancarlos.gob.ar/geoserver/"}
+    "San Rafael": {"url": "https://mapas.mhnsanrafael.gob.ar/", "geoserver": "https://mapas.mhnsanrafael.gob.ar/geoserver/"},
+    "San Carlos": {"url": "https://mapas.sancarlos.gob.ar/#/", "geoserver": "https://mapas.sancarlos.gob.ar/geoserver/"}
 }
 
 # Lavalle separado
