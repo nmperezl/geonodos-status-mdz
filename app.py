@@ -88,23 +88,13 @@ def count_wfs_layers(geoserver_url):
 st.markdown("""
 <style>
 
-/* Fondo negro para toda la app */
-html, body {
-    height: 100%;
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
-    margin: 0;
-    padding: 0;
-    
-}
-
-
-
 /* Fondo negro para contenido principal y sidebar */
-.main, .block-container, [data-testid="stSidebar"], .css-18e3th9, .css-1d391kg {
+.main, .block-container, [data-testid="stSidebar"], .css-18e3th9, .css-1d391kg, .stApp, main.block-container {
     background-color: #000000 !important;
     color: #FFFFFF !important;
     padding: 1rem;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 /* Fondo negro para el header superior */
@@ -118,12 +108,10 @@ header {
     margin: 0;
 }
 
+/* Si necesitas padding extra en block-container */
 .block-container {
     padding: 1rem;
-    min-height: 100vh;
-    box-sizing: border-box;
 }
-
 
 .status-card {
     background-color: #1f1917;
