@@ -97,13 +97,19 @@ html, body {
     min-height: 100%;
 }
 
-.main, .block-container {
+/* Fondo negro para contenido principal y sidebar */
+.main, .block-container, [data-testid="stSidebar"], .css-18e3th9, .css-1d391kg {
     background-color: #000000 !important;
     color: #FFFFFF !important;
     padding: 1rem;
 }
 
+/* Fondo negro para el header superior */
+header {
+    background-color: #000000 !important;
+}
 
+/* Ajustes para contenedores */
 .reportview-container .main {
     padding: 0;
     margin: 0;
@@ -113,7 +119,6 @@ html, body {
     padding: 1rem;
     min-height: 100vh;
     box-sizing: border-box;
-    
 }
 
 
