@@ -39,6 +39,72 @@ lavalle = {
     "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"}
 }
 
+capas_prioritarias = [
+    "esp_verdes_publicos",
+    "basurales_cielo_abierto",
+    "efectores_de_salud",
+    "farmacias",
+    "vacunatorios",
+    "red_vial",
+    "ciclovias",
+    "paradas_transporte",
+    "terminales_omnibus",
+    "estaciones_de_servicio",
+    "mercados_concentradores_ferias",
+    "industrias",
+    "parques_industriales",
+    "industria_vitivinicola",
+    "comercio",
+    "complejo_comercial",
+    "entidad_financiera",
+    "antena_de_telecomunicacion",
+    "punto_wifi",
+    "oficina_prestadores_de_servicio electrico",
+    "linea_electrica_de_alta_tension",
+    "linea_electrica_de_media_tension",
+    "linea_electrica_de_baja_tension",
+    "oficina_prestadores_de_servicio_de_gas",
+    "red_de_distribución_de_gas",
+    "oficina_prestadores_de_servicio_de_agua_saneamiento",
+    "red_de_distribución_de_agua",
+    "red_de_distribución_de_cloacas",
+    "barrios_publicos",
+    "barrios_privados",
+    "puestos",
+    "geriatricos",
+    "comedor_comunitario",
+    "establecimientos_educativos",
+    "universidades_terciarios",
+    "centros_capacitacion_trabajo",
+    "centros_culturales",
+    "sitios_históricos",
+    "informador_turistico",
+    "edificios_religiosos",
+    "bibliotecas",
+    "museos",
+    "monumentos_lugares_históricos",
+    "teatros",
+    "cine",
+    "establecimientos_deportivos",
+    "sitios_recreacion",
+    "comisarias_y_destacamientos_policiales",
+    "bomberos",
+    "defensa_civil",
+    "penitenciaria",
+    "instalaciones_militares",
+    "juzgados_fiscalias",
+    "obras_municipales",
+    "limite_distrital",
+    "localidades",
+    "vacios_urbanos",
+    "oficina_gubernamental",
+    "indicadores_urbanos_municipio",
+    "edificabilidad_municipio"
+]
+
+
+# pasar a minúsculas 
+capas_prioritarias = [c.lower() for c in capas_prioritarias]
 
 # chequear el estado de un GeoNodo
 def check_status(url):
@@ -68,7 +134,6 @@ def check_lavalle_status(geoserver_url):
         return "🔴 Revisar", None
 
 
-
 # Contar capas WFS
 def count_wfs_layers(geoserver_url):
     try:
@@ -83,6 +148,23 @@ def count_wfs_layers(geoserver_url):
             return None
     except Exception:
         return None 
+
+# Contar coincidencias nombres
+def get_wfs_layer_names(geoserver_url):
+    try:
+        wfs_url = f"{geoserver_url}wfs?request=GetCapabilities"
+        response = requests.get(wfs_url, timeout=5)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'xml')
+            feature_types = soup.find_all('FeatureType')
+            nombres = [ft.Name.text.lower() for ft in feature_types if ft.Name]
+            return nombres
+        else:
+            return []
+    except Exception:
+        return []
+
+
 
 # Estilos
 st.markdown("""
@@ -160,6 +242,7 @@ for nombre, data in geonodos.items():
     status_class = "status-online" if "🟢" in estado else "status-offline"
 
     dataset_count = None
+    capas = []
     fuente = ""
 
 
@@ -171,6 +254,16 @@ for nombre, data in geonodos.items():
             
     count_text = f"<br> <strong>{dataset_count}</strong> datasets{fuente}" if dataset_count is not None else ""
 
+        # obtener nombres para contar capas prioritarias
+        layer_names = get_wfs_layer_names(data['geoserver'])
+        cantidad_prioritarias = sum(1 for c in layer_names if c in capas_prioritarias)
+    else:
+        cantidad_prioritarias = 0
+
+    count_text = f"<br> <strong>{dataset_count}</strong> datasets{fuente}" if dataset_count is not None else ""
+    if cantidad_prioritarias > 0:
+        count_text += f"<br>Capas prioritarias: <strong>{cantidad_prioritarias}</strong>"
+    
     st.markdown(
         f"""
         <div class="status-card {status_class}">
