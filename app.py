@@ -90,12 +90,15 @@ st.markdown("""
 
 /* Fondo negro para toda la app */
 html, body {
+    height: 100%;
     background-color: #000000 !important;
     color: #FFFFFF !important;
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    
 }
+
+
 
 /* Fondo negro para contenido principal y sidebar */
 .main, .block-container, [data-testid="stSidebar"], .css-18e3th9, .css-1d391kg {
