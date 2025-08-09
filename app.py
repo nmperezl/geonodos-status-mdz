@@ -236,6 +236,9 @@ header {
 </style>
 """, unsafe_allow_html=True)
 
+
+
+
 # Mostrar resultados
 for nombre, data in geonodos.items():
     estado, html = check_status(data['url'])
@@ -244,16 +247,14 @@ for nombre, data in geonodos.items():
     dataset_count = None
     capas = []
     fuente = ""
-
+    cantidad_prioritarias = 0  # inicializo para evitar error si no entra al if
 
     # Siempre contar los datasets, independientemente del estado
     if 'geoserver' in data:
         dataset_count = count_wfs_layers(data['geoserver'])
         if dataset_count is not None:
             fuente = " (WFS)"
-            
-    count_text = f"<br> <strong>{dataset_count}</strong> datasets{fuente}" if dataset_count is not None else ""
-
+        
         # obtener nombres para contar capas prioritarias
         layer_names = get_wfs_layer_names(data['geoserver'])
         cantidad_prioritarias = sum(1 for c in layer_names if c in capas_prioritarias)
@@ -263,7 +264,7 @@ for nombre, data in geonodos.items():
     count_text = f"<br> <strong>{dataset_count}</strong> datasets{fuente}" if dataset_count is not None else ""
     if cantidad_prioritarias > 0:
         count_text += f"<br>Capas prioritarias: <strong>{cantidad_prioritarias}</strong>"
-    
+
     st.markdown(
         f"""
         <div class="status-card {status_class}">
