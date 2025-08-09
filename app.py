@@ -28,7 +28,10 @@ geonodos = {
   #  "Lavalle": {"url": "https://geoserver.lavallemendoza.gob.ar/", "geoserver": "https://geoserver.lavallemendoza.gob.ar/geoserver/"},
     "Luján de Cuyo": {"url": "https://geoportal.lujandecuyo.gob.ar/", "geoserver": "https://geoportal.lujandecuyo.gob.ar/geoserver/"},
     "San Rafael": {"url": "https://mapas.mhnsanrafael.gob.ar/", "geoserver": "https://mapas.mhnsanrafael.gob.ar/geoserver/"},
-    "San Carlos": {"url": "https://mapas.sancarlos.gob.ar/#/", "geoserver": "https://mapas.sancarlos.gob.ar/geoserver/"}
+    "San Carlos": {"url": "https://mapas.sancarlos.gob.ar/#/", "geoserver": "https://mapas.sancarlos.gob.ar/geoserver/"},
+    "Tunuyán": {"url": "https://gis.tunuyan.gov.ar/#/", "geoserver": "https://gis.tunuyan.gov.ar/geoserver/"},
+"Santa Rosa": {"url": "https://ide.santarosamendoza.gob.ar/#/", "geoserver": "https://ide.santarosamendoza.gob.ar/geoserver/"}
+
 }
 
 # Lavalle separado
